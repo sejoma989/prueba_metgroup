@@ -59,18 +59,18 @@ const a = [1, 2],
     b = [
         [1, 2],
         [2, 4],
-        ],
+    ],
     c = [
         [1, 2],
         [2, 4],
         [2, 4],
-        ],
+    ],
     d = [
         [
             [3,4],
             [6,5],
         ]
-        ],
+    ],
     e = [
         [
             [1, 2, 3]
@@ -84,7 +84,7 @@ const a = [1, 2],
             [4, 8, 3], 
             [2, 3]
         ]
-        ],
+    ],
     f = [
         [
             [1, 2, 3], 
@@ -98,6 +98,27 @@ const a = [1, 2],
             [3, 5, 6], 
             [4, 8, 3]
         ]
+    ],
+    g = [
+        [
+            [1, 2, 3], 
+            [2, 3, 4]
+        ], 
+        [
+            [5, 6, 7], 
+            [5, 4, 3]
+        ], 
+        [
+            [3, 5, 6], 
+            [4, 8, 3]
+        ],
+        [
+            [4, 5, 6],
+            [
+                [2, 3, 8],
+            ]
+        ]
+
     ];
 
     console.log(a);
@@ -106,4 +127,22 @@ const a = [1, 2],
     console.log(d);
     console.log(e);
     console.log(f);
+    console.log(g);
 
+let o ={
+    dimension: function(array){
+        return Array.isArray(array) ?
+            1 + Math.max(...array.map((t) => o.dimension(t))) :
+            0;
+    },
+}
+
+const ob = Object.create(o);
+
+console.log(ob.dimension(a));
+console.log(ob.dimension(b));
+console.log(ob.dimension(c));
+console.log(ob.dimension(d));
+console.log(ob.dimension(e));
+console.log(ob.dimension(f));
+console.log(ob.dimension(g));
