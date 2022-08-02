@@ -55,6 +55,56 @@
 // -Escriba los comentarios que considere necesarios para explicar los
 // procedimientos o algoritmos descritos.
 
+// Objeto como clase ES2015
+class Objeto {
+    constructor() {
+        this.dimension = function (array) {
+            /**
+             * Obtiene la profundidad de un arreglo.
+             * @param [array]   array   Arreglo a reducir.
+             * @return [number]         Entero con la profundidad del arreglo
+             */
+            return Array.isArray(array) ?
+                    1 + Math.max(...array.map((t) => o.dimension(t))) :
+                    0;
+        };
+        this.straight = function (array) {
+            /**
+             * Define si un arreglo contiene igual # de elementos en cada dimension
+             * @param [array]   array   Arreglo a evaluar
+             * @return [boolean]        Booleano que define si el arreglo es uniforme
+             */
+            let cont = 0;
+            array.forEach((element) => {
+                if (array[0].length != element.length)
+                    cont++;
+            });
+            return (cont > 0) ? false : true;
+        };
+        this.compute = function (array) {
+            /**
+             * Devuelve un entero con la suma de todos los elementos del array
+             * @param [array]   array   Arreglo a evaluar
+             * @return[number]          Entero que contiene la suma total
+             */
+            array = array.flat(this.dimension(array));
+            // Aplana un array usando la funcion dimension como argumento
+
+            const initialValue = 0;
+            const sumWithInitial = array.reduce(
+                // Reduce el array de un nivel y devuelve como resultado un unico valor
+                (previousValue, currentValue) => previousValue + currentValue,
+                initialValue
+            );
+            return sumWithInitial;
+        };
+    }
+}
+
+// Creacion de una instancia del objeto
+let o = new Objeto();
+
+// Data provista como ejemplo para pruebas
 const a = [1, 2], 
     b = [
         [1, 2],
@@ -121,51 +171,7 @@ const a = [1, 2],
 
     ];
 
-    console.log(a);
-    console.log(b);
-    console.log(c);
-    console.log(d);
-    console.log(e);
-    console.log(f);
-    console.log(g);
-
-// Objeto como clase ES2015
-class Objeto {
-    constructor() {
-        this.dimension = function (array) {
-            /**
-             * Obtiene la profundidad de un arreglo.
-             * @param [array]   array   Arreglo a reducir.
-             * @return [number]         Entero con la profundidad del arreglo
-             */
-            return Array.isArray(array) ?
-                    1 + Math.max(...array.map((t) => o.dimension(t))) :
-                    0;
-        };
-        this.straight = function (array) {
-
-            let cont = 0;
-            array.forEach((element) => {
-                if (array[0].length != element.length)
-                    cont++;
-            });
-            return (cont > 0) ? false : true;
-        };
-        this.compute = function (array) {
-            array = array.flat(this.dimension(array));
-
-            const initialValue = 0;
-            const sumWithInitial = array.reduce(
-                (previousValue, currentValue) => previousValue + currentValue,
-                initialValue
-            );
-            return sumWithInitial;
-        };
-    }
-}
-
-let o = new Objeto();
-
+// Evaluacion de todos los arrays para el primer metodo
 console.log(o.dimension(a));
 console.log(o.dimension(b));
 console.log(o.dimension(c));
@@ -174,6 +180,7 @@ console.log(o.dimension(e));
 console.log(o.dimension(f));
 console.log(o.dimension(g));
 
+// Evaluacion de todos los arrays para el segundo metodo
 console.log(o.straight(a));
 console.log(o.straight(b));
 console.log(o.straight(c));
@@ -181,9 +188,11 @@ console.log(o.straight(d));
 console.log(o.straight(e));
 console.log(o.straight(f));
 
+// Evaluacion de todos los arrays para el tercer metodo
 console.log(o.compute(a));
 console.log(o.compute(b));
 console.log(o.compute(c));
 console.log(o.compute(d));
 console.log(o.compute(e));
 console.log(o.compute(f));
+console.log(o.compute(g));
