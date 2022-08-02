@@ -129,25 +129,37 @@ const a = [1, 2],
     console.log(f);
     console.log(g);
 
-function Objeto(array){
-    this.array = array;
-    this.dimension = function(array){
+// Objeto como clase ES2015
+class Objeto {
+    constructor() {
+        this.dimension = function (array) {
+        /**
+         *         Metodo dimension:  
+
+         */
         return Array.isArray(array) ?
-            1 + Math.max(...array.map((t) => o.dimension(t))) :
-            0;
-    };
-    this.getLength = function(array){
-        return 0 in array ?
-            1 + this.getLength(array.slice(1)) : 
-            0;
-    };
-    this.straight = function(array){
-        let cont = 0;
-        array.forEach((element) => {
-            if (array[0].length != element.length) cont ++;                          
-        });
-        return (cont > 0) ? false : true;
-    };
+                1 + Math.max(...array.map((t) => o.dimension(t))) :
+                0;
+        };
+        this.straight = function (array) {
+            let cont = 0;
+            array.forEach((element) => {
+                if (array[0].length != element.length)
+                    cont++;
+            });
+            return (cont > 0) ? false : true;
+        };
+        this.compute = function (array) {
+            array = array.flat(this.dimension(array));
+
+            const initialValue = 0;
+            const sumWithInitial = array.reduce(
+                (previousValue, currentValue) => previousValue + currentValue,
+                initialValue
+            );
+            return sumWithInitial;
+        };
+    }
 }
 
 let o = new Objeto();
@@ -167,4 +179,9 @@ console.log(o.straight(d));
 console.log(o.straight(e));
 console.log(o.straight(f));
 
-console.log(o.getLength(c));
+console.log(o.compute(a));
+console.log(o.compute(b));
+console.log(o.compute(c));
+console.log(o.compute(d));
+console.log(o.compute(e));
+console.log(o.compute(f));
