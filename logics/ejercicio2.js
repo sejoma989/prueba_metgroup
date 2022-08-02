@@ -60,6 +60,12 @@ class Objeto {
             return flag;
         };
         this.compute = function (expresion) {
+            if (this.operation(expresion)) {
+                this.result = eval(expresion);
+                return this.result;
+            } else {
+                return false;
+            }
 
         }
     }
@@ -69,3 +75,11 @@ let s = new Objeto();
 
 console.log(s.operation(a));
 console.log(s.operation(b));
+console.log(s.operation(c));
+//console.log(s.operation(d));
+
+console.log(s.compute(a));
+console.log(s.compute(b));
+console.log(s.compute(c));
+//console.log(s.compute(d));
+
