@@ -133,15 +133,17 @@ const a = [1, 2],
 class Objeto {
     constructor() {
         this.dimension = function (array) {
-        /**
-         *         Metodo dimension:  
-
-         */
-        return Array.isArray(array) ?
-                1 + Math.max(...array.map((t) => o.dimension(t))) :
-                0;
+            /**
+             * Obtiene la profundidad de un arreglo.
+             * @param [array]   array   Arreglo a reducir.
+             * @return [number]         Entero con la profundidad del arreglo
+             */
+            return Array.isArray(array) ?
+                    1 + Math.max(...array.map((t) => o.dimension(t))) :
+                    0;
         };
         this.straight = function (array) {
+
             let cont = 0;
             array.forEach((element) => {
                 if (array[0].length != element.length)
