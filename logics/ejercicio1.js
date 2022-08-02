@@ -129,20 +129,42 @@ const a = [1, 2],
     console.log(f);
     console.log(g);
 
-let o ={
-    dimension: function(array){
+function Objeto(array){
+    this.array = array;
+    this.dimension = function(array){
         return Array.isArray(array) ?
             1 + Math.max(...array.map((t) => o.dimension(t))) :
             0;
-    },
+    };
+    this.getLength = function(array){
+        return 0 in array ?
+            1 + this.getLength(array.slice(1)) : 
+            0;
+    };
+    this.straight = function(array){
+        let cont = 0;
+        array.forEach((element) => {
+            if (array[0].length != element.length) cont ++;                          
+        });
+        return (cont > 0) ? false : true;
+    };
 }
 
-const ob = Object.create(o);
+let o = new Objeto();
 
-console.log(ob.dimension(a));
-console.log(ob.dimension(b));
-console.log(ob.dimension(c));
-console.log(ob.dimension(d));
-console.log(ob.dimension(e));
-console.log(ob.dimension(f));
-console.log(ob.dimension(g));
+console.log(o.dimension(a));
+console.log(o.dimension(b));
+console.log(o.dimension(c));
+console.log(o.dimension(d));
+console.log(o.dimension(e));
+console.log(o.dimension(f));
+console.log(o.dimension(g));
+
+console.log(o.straight(a));
+console.log(o.straight(b));
+console.log(o.straight(c));
+console.log(o.straight(d));
+console.log(o.straight(e));
+console.log(o.straight(f));
+
+console.log(o.getLength(c));
