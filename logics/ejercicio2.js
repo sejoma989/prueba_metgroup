@@ -52,23 +52,28 @@ class Objeto {
     constructor() {
         this.operation = function (expresion) {
             flag = true;
-            if (expresion.includes("[a-z]"))
-                flag = false;
-            else if (expresion.includes( "-" | "+" | "*" | "/" )) {
-                eval(expresion) ? flag = true : flag = false;
-            } else flag = false;
+            if (!expresion.includes("[a-z]")) {
+                if (expresion.includes( "-" | "+" | "*" | "/" )) {
+                    try {
+                        eval(expresion);
+                    } catch (error) {
+                        flag = false;
+                    }
+                } else flag = false;
+            }
             return flag;
         };
         this.compute = function (expresion) {
             if (this.operation(expresion)) {
-                this.result = eval(expresion);
-                return this.result;
-            } else {
-                return false;
-            }
-
-        }
-    }
+                try {
+                    this.result = eval(expresion);
+                    return this.result;
+                } catch (error) {
+                    return false;
+                }
+            } else return false;            
+        }        
+    }    
 };
 
 let s = new Objeto();
@@ -76,10 +81,10 @@ let s = new Objeto();
 console.log(s.operation(a));
 console.log(s.operation(b));
 console.log(s.operation(c));
-//console.log(s.operation(d));
+console.log(s.operation(d));
 
 console.log(s.compute(a));
 console.log(s.compute(b));
 console.log(s.compute(c));
-//console.log(s.compute(d));
+console.log(s.compute(d));
 
