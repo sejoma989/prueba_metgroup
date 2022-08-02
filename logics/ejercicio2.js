@@ -41,5 +41,31 @@ incompleto también suma puntos.
 poder ser compilado o interpretado dependiendo del lenguaje usado.
 -Escriba los comentarios que considere necesarios para explicar los
 procedimientos o algoritmos descritos.
-
 */
+
+const a = "Hello world",
+    b = "2 + 10 / 2 - 20",
+    c = "(2 + 10) / 2 - 20",
+    d = "(2 + 10 / 2 - 20";
+
+class Objeto {
+    constructor() {
+        this.operation = function (expresion) {
+            flag = true;
+            if (expresion.includes("[a-z]"))
+                flag = false;
+            else if (expresion.includes( "-" | "+" | "*" | "/" )) {
+                eval(expresion) ? flag = true : flag = false;
+            } else flag = false;
+            return flag;
+        };
+        this.compute = function (expresion) {
+
+        }
+    }
+};
+
+let s = new Objeto();
+
+console.log(s.operation(a));
+console.log(s.operation(b));

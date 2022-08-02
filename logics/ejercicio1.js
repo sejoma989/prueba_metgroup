@@ -171,7 +171,7 @@ const a = [1, 2],
 
     ];
 
-// Evaluacion de todos los arrays para el primer metodo
+// Evaluacion de metodo DImension para todos los arrays
 console.log(o.dimension(a));
 console.log(o.dimension(b));
 console.log(o.dimension(c));
@@ -180,7 +180,7 @@ console.log(o.dimension(e));
 console.log(o.dimension(f));
 console.log(o.dimension(g));
 
-// Evaluacion de todos los arrays para el segundo metodo
+// Evaluacion de metodo Straight para todos los arrays
 console.log(o.straight(a));
 console.log(o.straight(b));
 console.log(o.straight(c));
@@ -188,7 +188,7 @@ console.log(o.straight(d));
 console.log(o.straight(e));
 console.log(o.straight(f));
 
-// Evaluacion de todos los arrays para el tercer metodo
+// Evaluacion de metodo Compute para todos los arrays
 console.log(o.compute(a));
 console.log(o.compute(b));
 console.log(o.compute(c));
