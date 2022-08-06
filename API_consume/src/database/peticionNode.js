@@ -23,11 +23,12 @@ const dataPostAuth = {
         password:"12345",
     },
     postAuth: function() {
-        axios.post('https://test-api-met.herokuapp.com/auth', this.insertData).then(res => {        
-            console.log(`Status code: ${res.status}`);
-            respuesta = JSON.stringify(res.data);
-            console.log(`Body: ${respuesta}`);
-            return respuesta;
+        axios.post('https://test-api-met.herokuapp.com/auth', this.insertData)
+            .then(res => {        
+                console.log(`Status code: ${res.status}`);
+                respuesta = JSON.stringify(res.data);
+                console.log(`Body: ${respuesta}`);
+                return respuesta;
         }).catch(err => {
             console.log(JSON.stringify(err.response.data))
         })

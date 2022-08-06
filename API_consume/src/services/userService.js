@@ -4,11 +4,13 @@ const postRegister = () => {
     const registerUser = User.postRegister();
     return registerUser;
 }
-const postAuthUser = () => {
-    return;
-};
+
+const postAuth = () => {
+    const authUser = User.postAuth();
+    return authUser;
+}
 
 module.exports = {
     postRegister,
-    postAuthUser
+    postAuth
 }
