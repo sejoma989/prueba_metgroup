@@ -1,5 +1,5 @@
 const express = require('express');
-const v1loginRouter = require("./v1/routes/userRoutes")
+const v1loginRouter = require("./v1/routes/userRoutes");
 
 const app = express();
 const PORT = process.nextTick.PORT || 3000;
