@@ -43,27 +43,32 @@ poder ser compilado o interpretado dependiendo del lenguaje usado.
 procedimientos o algoritmos descritos.
 */
 
-const a = "Hello world",
-    b = "2 + 10 / 2 - 20",
-    c = "(2 + 10) / 2 - 20",
-    d = "(2 + 10 / 2 - 20";
+// Objeto como clase ES2015 que maneja los metodos operation y compute
+// desde el constructor
 
 class Objeto {
     constructor() {
         this.operation = function (expresion) {
-            flag = true;
+            let flag = true;
             if (!expresion.includes("[a-z]")) {
                 if (expresion.includes( "-" | "+" | "*" | "/" )) {
                     try {
                         eval(expresion);
                     } catch (error) {
-                        flag = false;
+                        this.flag = false;
                     }
-                } else flag = false;
+                } else this.flag = false;
             }
             return flag;
         };
         this.compute = function (expresion) {
+            /**
+             * Devuelve el valor computado de una operación aritmética y falso si 
+             * no es una operación aritmética matematica valida.
+             * @param [expresion]   string  String a evaluar.
+             * @return [number || boolean]  Entero resultado de la evaluacion o falso si
+             * no es valida
+             */
             if (this.operation(expresion)) {
                 try {
                     this.result = eval(expresion);
@@ -76,13 +81,22 @@ class Objeto {
     }    
 };
 
+// Creacion de una instancia del objeto para comenzar a evaluar las expresiones
 let s = new Objeto();
 
+// Data provista como ejemplo para pruebas
+const a = "Hello world",
+    b = "2 + 10 / 2 - 20",
+    c = "(2 + 10) / 2 - 20",
+    d = "(2 + 10 / 2 - 20";
+
+// Evaluacion de metodo operation para todas las expresiones
 console.log(s.operation(a));
 console.log(s.operation(b));
 console.log(s.operation(c));
 console.log(s.operation(d));
 
+// Evaluacion de metodo compute para todas las expresiones
 console.log(s.compute(a));
 console.log(s.compute(b));
 console.log(s.compute(c));
