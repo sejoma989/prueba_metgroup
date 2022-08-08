@@ -41,15 +41,14 @@ const dataPostAuth = {
         axios.post('https://test-api-met.herokuapp.com/auth', this.insertData)
             .then(res => {        
                 console.log(`Status code: ${res.status}`);
-                respuesta = JSON.stringify(res.data);
-                console.log(`Body: ${respuesta}`);
-                return respuesta;
+                return JSON.stringify(res.data);
         }).catch(err => {
-            console.log(JSON.stringify(err.response.data))
+            return JSON.stringify(err.response.data)
         })
     }
 };
 
+console.log(dataPostRegister.postRegister());
 console.log(dataPostAuth.postAuth());
 
 module.exports = {
