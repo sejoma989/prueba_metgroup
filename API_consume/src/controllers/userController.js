@@ -8,13 +8,13 @@ const postRegister = (req, res) => {
     const registerUser = userService.postRegister();
     console.log(registerUser);
     // send desde el controller no del servicio 
-    res.send({ status:"OK", data: registerUser });
+    // res.send({ status:"OK", data: registerUser });
 };
 
 const postAuth = (req, res) => {
     const authUser = userService.postAuth();
     console.log(authUser);
-    res.send({ status:"OK", data: authUser });
+    // res.send({ status:"OK", data: authUser });
 };
 
 module.exports = {

@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { postRegister } = require('./User');
 
 const dataPostRegister = {
     insertData: {
@@ -12,7 +13,7 @@ const dataPostRegister = {
             console.log(`Body: ${respuesta}`);
             return respuesta;
         }).catch(err => {
-            console.log(JSON.stringify(err.response.data))
+            console.log(JSON.stringify(err.response.data));
         })
     }
 };
@@ -41,15 +42,16 @@ const dataPostAuth = {
         axios.post('https://test-api-met.herokuapp.com/auth', this.insertData)
             .then(res => {        
                 console.log(`Status code: ${res.status}`);
-                return JSON.stringify(res.data);
-        }).catch(err => {
-            return JSON.stringify(err.response.data)
+                console.log(JSON.stringify(res.data)); 
+                return res;               
+            }).catch(err => {
+                console.log(JSON.stringify(err.response.data));
         })
     }
 };
 
-console.log(dataPostRegister.postRegister());
-console.log(dataPostAuth.postAuth());
+console.log(dataPostRegister[postRegister]);
+console.log(dataPostAuth);
 
 module.exports = {
     dataPostRegister,
